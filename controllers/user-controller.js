@@ -16,11 +16,11 @@ const userController = {
     // get one user by id
     getUserById({ params }, res){
         User.findOne({ _id: params.id })
-            // .populate({
-            //     // need to update to add friends (use array?)
-            //     path: 'thoughts',
-            //     select: '-__v'
-            // })
+            .populate({
+                // need to update to add friends (use array?)
+                path: 'thoughts',
+                select: '-__v'
+            })
             .populate({
                 path: 'friends',
                 select: '-__v'
