@@ -16,11 +16,11 @@ const userController = {
     // get one user by id
     getUserById({ params }, res){
         User.findOne({ _id: params.id })
-            .populate({
-                // need to update to add friends (use array?)
-                path: 'thoughts',
-                select: '-__v'
-            })
+            // .populate({
+            //     // need to update to add friends (use array?)
+            //     path: 'thoughts',
+            //     select: '-__v'
+            // })
             .select('-__v')
             .then(dbUserData => {
                 if(!dbUserData){
@@ -46,7 +46,7 @@ const userController = {
     },
 
     // update user by id
-    updateUser({ params }, res) {
+    updateUser({ params, body }, res) {
         User.findOneAndUpdate({ _id: params.id}, body, { new: true, runValidators: true})
         .then(dbUserData => {
             if(!dbUserData){
