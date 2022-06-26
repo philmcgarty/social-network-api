@@ -29,9 +29,7 @@ const thoughtController = {
             res.status(400).json(err);
         })
     },
-
-
-    // needs fixing!!!!!
+    
     // create a new thought
     createThought({ body }, res){
         Thought.create(body)
@@ -40,8 +38,8 @@ const thoughtController = {
                 console.log(err)
             }
             return User.findOneAndUpdate(
-                { userName: body.userName },
-                { $push: { thoughts: body._id}},
+                { username: dbThoughtData.userName },
+                { $push: { thoughts: dbThoughtData._id}},
                 { new: true}
             );
         })
