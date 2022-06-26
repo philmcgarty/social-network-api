@@ -17,7 +17,6 @@ const userController = {
     getUserById({ params }, res){
         User.findOne({ _id: params.id })
             .populate({
-                // need to update to add friends (use array?)
                 path: 'thoughts',
                 select: '-__v'
             })
@@ -121,7 +120,5 @@ const userController = {
         })
     }
 };
-
-
 
 module.exports = userController;
